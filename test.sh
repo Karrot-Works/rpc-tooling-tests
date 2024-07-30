@@ -23,3 +23,13 @@ npx hardhat upgrade:TestTokenV2 --network $NETWORK
 
 echo "Deploying contract using Hardhat Ignition..."
 npx hardhat ignition deploy ./ignition/modules/Lock.ts --network $NETWORK
+
+# Run foundry project
+echo "changing directory to Foundry"
+cd ../foundry
+
+echo "Running forge test"
+forge test
+
+echo "deploying contracts"
+forge script script/DeployTestToken.s.sol --rpc-url ${KAKAROT_SEPOLIA_RPC} --broadcast --private-key ${PRIVATE_KEY}
