@@ -21,13 +21,11 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
-
-      - name: Install Hardhat
-        run: npm install --save-dev hardhat@2.22.3
-
-      - name: Install Hardhat Dependencies
-        run: npm ci
+        run:
+          cd hardhat
+          npm install
+          npm install --save-dev hardhat@2.22.3
+          npm ci
 
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
