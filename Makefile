@@ -17,6 +17,8 @@ endif
 deploy-hardhat:
 	@echo "Running Hardhat"
 	@cd hardhat && \
+	echo "Compile the contracts..." && \
+	npx hardhat compile && \
 	echo "Deploying TestToken contract..." && \
 	npx hardhat deploy:TestToken --network $(NETWORK) && \
 	echo "Deploying TestTokenV1 contract..." && \
