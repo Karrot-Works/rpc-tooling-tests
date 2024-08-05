@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      NETWORK: ${{ vars.NETWORK }}
-      RPC_URL: ${{ vars.RPC_URL }}
+      NETWORK: ${{ secrets.NETWORK }}
+      RPC_URL: ${{ secrets.RPC_URL }}
       PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
 
     steps:
