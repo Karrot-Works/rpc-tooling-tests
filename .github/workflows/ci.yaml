@@ -1,0 +1,32 @@
+name: CI/CD Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      NETWORK: ${{ env.NETWORK }}
+      RPC_URL: ${{ env.RPC_URL }}
+      PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Set up Foundry
+        run: |
+          curl -L https://foundry.paradigm.xyz | bash
+          source ~/.foundry/bin
+
+      - name: Run Makefile
+        run: make all
