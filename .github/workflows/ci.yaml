@@ -21,7 +21,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run:
+        run: |
           cd hardhat
           npm install
           npm install --save-dev hardhat@2.22.3
