@@ -24,7 +24,7 @@ deploy-hardhat:
 	echo "Deploying TestTokenV1 contract..." && \
 	npx hardhat deploy:TestTokenV1 --network $(NETWORK) && \
 	echo "Upgrade TestTokenV1 contract to TestTokenV2..." && \
-	npx hardhat upgrade:TestTokenV2 --network $(NETWORK) && \
+	npx hardhat upgrade:TestTokenV2 --network $(NETWORK)
 
 # Foundry tasks
 test-foundry:
