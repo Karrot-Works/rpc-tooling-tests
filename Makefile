@@ -25,8 +25,6 @@ deploy-hardhat:
 	npx hardhat deploy:TestTokenV1 --network $(NETWORK) && \
 	echo "Upgrade TestTokenV1 contract to TestTokenV2..." && \
 	npx hardhat upgrade:TestTokenV2 --network $(NETWORK) && \
-	echo "Deploying contract using Hardhat Ignition..." && \
-	npx hardhat ignition deploy ./ignition/modules/Lock.ts --network $(NETWORK)
 
 # Foundry tasks
 test-foundry:
