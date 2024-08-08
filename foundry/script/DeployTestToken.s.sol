@@ -7,11 +7,10 @@ import "forge-std/console.sol";
 
 contract DeployTestToken is Script {
     function run() public {
+        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        vm.startBroadcast(deployerPrivateKey);
         // Specify the initial supply of tokens
         uint256 initialSupply = 10_000 * 10**18;
-
-        // Start broadcasting transactions
-        vm.startBroadcast();
 
         // Deploy the contract
         TestToken token = new TestToken(initialSupply);
