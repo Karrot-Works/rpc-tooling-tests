@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      NETWORK: ${{ env.NETWORK }}
-      RPC_URL: ${{ env.RPC_URL }}
+      NETWORK: ${{ secrets.NETWORK }}
+      RPC_URL: ${{ secrets.RPC_URL }}
       PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
 
     steps:
@@ -21,12 +21,14 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
-
-      - name: Set up Foundry
         run: |
-          curl -L https://foundry.paradigm.xyz | bash
-          source ~/.foundry/bin
+          cd hardhat
+          npm install
+          npm install --save-dev hardhat@2.22.3
+          npm ci
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
 
       - name: Run Makefile
         run: make all
